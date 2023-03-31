@@ -204,6 +204,7 @@ async function run(context, plugins) {
     // Create the tag before calling the publish plugins as some require the tag to exists
     await tag(nextRelease.gitTag, nextRelease.gitHead, { cwd, env });
     await addNote({ channels: [nextRelease.channel] }, nextRelease.gitHead, { cwd, env });
+    debug(`pushing to ${options.repositoryUrl}, ${cwd}, ${env}`);
     await push(options.repositoryUrl, { cwd, env });
     await pushNotes(options.repositoryUrl, { cwd, env });
     logger.success(`Created tag ${nextRelease.gitTag}`);
