@@ -19,7 +19,9 @@ import getLogger from "./lib/get-logger.js";
 import { addNote, getGitHead, getTagHead, isBranchUpToDate, push, pushNotes, tag, verifyAuth } from "./lib/git.js";
 import getError from "./lib/get-error.js";
 import { COMMIT_EMAIL, COMMIT_NAME } from "./lib/definitions/constants.js";
-import debugGit from "debug";
+import debugIndex from "debug";
+
+const debug = debugIndex("semantic-release:index");
 
 const require = createRequire(import.meta.url);
 const pkg = require("./package.json");
